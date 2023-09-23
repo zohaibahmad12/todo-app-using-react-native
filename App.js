@@ -1,27 +1,43 @@
-import React from 'react';
-import { View,StyleSheet } from 'react-native';
+import React,{useEffect} from 'react';
+import { View, StyleSheet} from 'react-native';
 import Header from './src/components/Header';
-import TodoContainer from './src/components/TodoContainer';
+import TodoInput from './src/components/TodoInput';
+import TodoList from './src/components/TodoList';
+
+
+import { ContextProvider } from './src/context/Context';
+
 const App = () => {
 
 
   return (
-    <View style={styles.wrapper}>
-      <Header></Header>
-      <TodoContainer></TodoContainer>
-    </View>
+    <ContextProvider>
+
+        <View style={styles.container}>
+          <Header title="Todo App" />
+          <View style={styles.todoContainer}>
+            <TodoInput />
+            <TodoList />
+          </View>
+        </View>    
+
+    </ContextProvider>
   );
-}
+};
 
 const styles = StyleSheet.create({
-
-  wrapper: {
+  container: {
     flex:1,
-    backgroundColor: "#171723",
-    alignItems:"center"
+    backgroundColor: '#fcfcfc',
     
-  }
-
-})
+  },
+  todoContainer: {
+    flex:1,
+    backgroundColor: '#ffffff', 
+    margin: 10,
+    padding: 20,
+    
+  },
+});
 
 export default App;
